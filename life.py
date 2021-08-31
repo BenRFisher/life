@@ -11,6 +11,8 @@ b. Update the display of grid values.
 #attempt to make a grid
 
 import pygame
+
+#Constants for the grid design
 BLACK = (0,0,0)
 WHITE=(255,255,255)
 RED=(255,0,0)
@@ -26,13 +28,14 @@ height=20
 margin=5
 
 
-
+# 10x10 matrix filled with zeros
 grid=[]
 for row in range(11):
     grid.append([])
     for column in range(11):
         grid[row].append(0)
 
+# Populate the initial grid spots
 grid[6][5]=1
 grid[5][5]=1
 grid[4][5]=1
@@ -60,7 +63,7 @@ while not done:
             pygame.draw.rect(screen,colour,(((margin+width)*column +margin),((margin+height)*row +margin),width,height))
            
 
-    clock.tick(60)
+    clock.tick(60) #Frames per second, speed game runs
     pygame.display.flip()
     sum=[]
     #this bit is changing the grid array so that values which should be changed according to conways rules change from 1 to 0 or vice-versa
@@ -71,12 +74,10 @@ while not done:
             if grid[row][column]==1:
                 if (sum<2) or (sum>3):
                     grid[row][column]=0
-            
             else:
-                if grid[row][column]==0:
-                    if sum==3:
-                        grid[row][column]=1
-    done =True
+                if sum==3:
+                    grid[row][column]=1
+    done = True
         
 
 print(grid)
