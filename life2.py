@@ -90,7 +90,10 @@ def clickgraphicprint(WHITE,BLACK,RED,margin,width,height,screen,grid):
                 column = pos[0] // (width + margin)
                 row = pos[1] // (height + margin)
                 # Set that location to one
-                grid[row][column] = 1
+                if grid[row][column] == 1:
+                    grid[row][column]=0
+                else: 
+                    grid[row][column]=1
     
         screen.fill(BLACK)
         for row in range(20):
