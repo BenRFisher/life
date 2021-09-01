@@ -32,23 +32,10 @@ def createEmptyGrid():
     displayGrid("Grid Creation",grid)
     return grid
 
-def main():
-    print("\n\
-            --------------------------------------\n\
-            ---- Welcome to the Game of Life! ----\n\
-            --------------------------------------\n")
-
-    # 10x10 matrix filled with zeros
-    grid = createEmptyGrid()
-
-    # Populate the initial grid spots
-    grid[5][4]=1
-    grid[4][4]=1
-    grid[3][4]=1
-    grid[4][3]=1
-    grid[3][5]=1
-    displayGrid("Initial grid spots", grid)
-
+def displaySumGrid(grid):
+    """
+    Take the grid and calculate the sum of each cell
+    """
     sumGrid=[]
     for row in range(10):
         sumGrid.append([])
@@ -83,6 +70,27 @@ def main():
                         (grid[row-1][column+1])) 
                 sumGrid[row].append(sum)
     displayGrid("Grid with calculated sum", sumGrid)
+
+def main():
+    print("\n\
+            --------------------------------------\n\
+            ---- Welcome to the Game of Life! ----\n\
+            --------------------------------------\n")
+
+    # 10x10 matrix filled with zeros
+    grid = createEmptyGrid()
+
+    # Populate the initial grid spots
+    grid[5][4]=1
+    grid[4][4]=1
+    grid[3][4]=1
+    grid[4][3]=1
+    grid[3][5]=1
+    displayGrid("Initial grid spots", grid)
+
+    # Get the grid with the sum
+    displaySumGrid(grid)
+    
 
 if __name__ == "__main__":
     main()
