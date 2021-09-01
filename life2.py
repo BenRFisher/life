@@ -19,21 +19,6 @@ def gridinitialise():
         grid.append([])
         for column in range(21):
             grid[row].append(0)
-    """
-    for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            pos=pygame.mouse.get_pos()
-            column=pos[0]//(width+margin)
-            row =pos[1]//(height+margin)
-            grid[row][column]=1
-    # Populate the initial grid spots
-    
-    grid[5][4]=1
-    grid[4][4]=1
-    grid[3][4]=1
-    grid[4][3]=1
-    grid[3][5]=1
-    """
     pygame.init()
     return grid
 
