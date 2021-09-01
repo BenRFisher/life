@@ -15,26 +15,26 @@ import pygame
 def gridinitialise():
     # 10x10 matrix filled with zeros
     grid=[]
-    for row in range(21):
+    for row in range(51):
         grid.append([])
-        for column in range(21):
+        for column in range(101):
             grid[row].append(0)
     pygame.init()
     return grid
 
 def gridCalculate(grid):
     sumarray=[]
-    for row in range(20):
+    for row in range(50):
         sumarray.append([])
-        for column in range(20):
+        for column in range(100):
             sum=((grid[row+1][column+1])+(grid[row][column+1])+(grid[row+1][column])+(grid[row-1][column-1])+(grid[row][column-1])+(grid[row-1][column])+(grid[row+1][column-1])+(grid[row-1][column+1])) 
             sumarray[row].append(sum)
                 
     #print(sumarray)
         #this bit is changing the grid array so that values which should be changed according to conways rules change from 1 to 0 or vice-versa
         #currently sum is accurately calculating the number of adjacent lit squares for each square, but isnt changing the grid array
-    for row in range(20):
-        for column in range(20):
+    for row in range(50):
+        for column in range(100):
             if grid[row][column]==1:
                 if sumarray[row][column]<=1:
                     grid[row][column]=0
@@ -51,8 +51,8 @@ def gridCalculate(grid):
 
 def graphicprint(WHITE,BLACK,RED,margin,width,height,screen,clock,grid):
     screen.fill(BLACK)
-    for row in range(20):
-        for column in range(20):
+    for row in range(50):
+        for column in range(100):
             colour=WHITE
             if grid[row][column]==1:
                 colour = RED
@@ -81,8 +81,8 @@ def clickgraphicprint(WHITE,BLACK,RED,margin,width,height,screen,grid):
                     grid[row][column]=1
     
         screen.fill(BLACK)
-        for row in range(20):
-            for column in range(20):
+        for row in range(50):
+            for column in range(100):
                 colour=WHITE
                 if grid[row][column]==1:
                     colour = RED
@@ -93,20 +93,19 @@ def clickgraphicprint(WHITE,BLACK,RED,margin,width,height,screen,grid):
            
 def main():
     #print("checkpoint 1")
-    import pygame
     BLACK = (0,0,0)
     WHITE=(255,255,255)
     RED=(255,0,0)
-    windowheight=500
-    windowwidth=500
+    windowheight=650
+    windowwidth=900
     size =(windowwidth,windowheight)
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("my game")
     done = False
     clock = pygame.time.Clock()
-    width =20
-    height=20
-    margin=5
+    width =10
+    height=10
+    margin=2
 
     grid = gridinitialise()
     grid=clickgraphicprint(WHITE,BLACK,RED,margin,width,height,screen,grid)
