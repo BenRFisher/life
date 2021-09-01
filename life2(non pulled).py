@@ -53,6 +53,7 @@ while not done:
 
     #screen clear code here
 
+    # Creating the pygame ui grid
     screen.fill(BLACK)
     for row in range(10):
         for column in range(10):
